@@ -1,13 +1,13 @@
 import React from 'react';
 import Tilt from 'react-tilt';
-import emoji from './emoji.png';
+import face2 from './face2.jpg';
 import './Logo.css';
 
 const Logo = () => {
   return (
-    <div className = 'ma4 mt0'>
-    <Tilt className="Tilt br2 shadow-2 db " options={{ max : 55 }} style={{ height: 150, width: 150 }} >
- <div className="Tilt-inner"> <img className='w-100 o-60' alt='logo'src={emoji}/> </div>
+    <div className = 'ma5 mt5'>
+    <Tilt className="Tilt br2 shadow-2 db " options={{ max : 35 }} style={{ height: 50, width: 120 }} >
+ <div className="Tilt-inner"> <img className=' w-100 o-70' alt='logo'src={face2}/> </div>
 </Tilt>
     </div>
   )
