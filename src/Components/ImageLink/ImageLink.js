@@ -1,7 +1,7 @@
 import React from 'react';
 import './ImageLink.css';
 
-const ImageLink = ({onInputChange, onButtonSubmit}) => {
+const ImageLink = ({onInputChange, onPictureSubmit}) => {
   return (
     <div>
     	<p className = 'f3'>
@@ -16,7 +16,7 @@ const ImageLink = ({onInputChange, onButtonSubmit}) => {
           />
 	    		<button 
           className ='w-30 grow f4 link ph1 pv2 dib bg-light-gray'
-          onClick = {onButtonSubmit}
+          onClick = {onPictureSubmit}
           > Detect </button>
 	    	</div>
     	</div>
