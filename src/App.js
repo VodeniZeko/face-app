@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import Navigation from './Components/Navigation/Navigation';
 import  Logo from './Components/Logo/Logo';
 import ImageLink from './Components/ImageLink/ImageLink';
@@ -10,10 +9,6 @@ import SignIn from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
 import './App.css';
 
-
-const app = new Clarifai.App({
- apiKey: 'b3f7a289193047bfbdd4ce4459b22d0e'
-});
 
 const particleBackground = {
       particles: {
@@ -34,6 +29,21 @@ const particleBackground = {
     }
 }
 
+const initState = {
+      input: '',
+      imageURL: '',
+      box: {},
+      route:'SignIn',
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: '',
+        joined: ''
+
+      }
+    } 
 
 class App extends Component {
   constructor() {
@@ -88,32 +98,37 @@ displayFaceBox = (box) => {
 
  onPictureSubmit = () => {
   this.setState({imageURL:this.state.input});
-  app.models
-  .predict(
-    Clarifai.FACE_DETECT_MODEL,
-    this.state.input)
-  .then(response => {
-    if (response) {
-      fetch('http://localhost:3000/image', {
-            method:'put',
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              id:this.state.user.id
-            })
-          })
-      .then(response => response.json())
-      .then(count => {
-        this.setState(Object.assign(this.state.user, {entries: count}))
+  fetch('http://localhost:3000/imageurl', {
+        method:'post',
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          input:this.state.input
+        })
       })
-    }
-    this.displayFaceBox(this.faceLocation(response))
-  })
-  .catch(err => console.log(err)); 
-}
+      .then(response => response.json())
+      .then(response => {
+        if (response) {
+          fetch('http://localhost:3000/image', {
+                method:'put',
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                  id:this.state.user.id
+                })
+              })
+              .then(response => response.json())
+              .then(count => {
+                    this.setState(Object.assign(this.state.user, {entries: count}))
+                  })
+              .catch(console.log)
+                }
+              this.displayFaceBox(this.faceLocation(response))
+              })
+              .catch(err => console.log(err)); 
+            }
 
 onRouteChange = (route) => {
   if(route === 'signout') {
-    this.setState({isSignedIn: false})
+    this.setState(initState)
   } else if(route === 'home'){
     this.setState({isSignedIn:true})
   }
