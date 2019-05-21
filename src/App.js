@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
+// import Matrix from './Components/Matrix/Matrix';
 import Navigation from './Components/Navigation/Navigation';
 import  Logo from './Components/Logo/Logo';
 import ImageLink from './Components/ImageLink/ImageLink';
@@ -11,23 +12,77 @@ import './App.css';
 
 
 const particleBackground = {
-      particles: {
-          number: {
-            value: 30,
-              density: {
-              enable:true,
-              value_area: 500
-          },
-          shape: {
-            type: 'circle',
-            stroke: {
-              width: 0,
-              color: '#e63045'
-          }
-        }
+"particles": {
+    "number": {
+      "value":50,
+      "density": {
+        "enable": true,
+        "value_area": 880
+      }
+    },
+    "color": {
+      "value": "#fff"
+    },
+    "shape": {
+      "type": "star",
+      "stroke": {
+        "width": 0,
+        "color": "#000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": .6,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 4,
+        "opacity_min": .1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 1.8,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 100,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 1,
+      "color": "#000",
+      "opacity": 4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
       }
     }
+  },
+  "retina_detect": true
 }
+
 
 const initState = {
       input: '',
@@ -140,9 +195,11 @@ onRouteChange = (route) => {
 const {isSignedIn, box, imageURL, route} = this.state; 
     return  (  
               <div className="App">
-                    <Particles className = 'particles'
-                    params={particleBackground}
-                    />
+                    <Particles 
+                    className= 'particles'
+                    params = {particleBackground}
+                    
+                    />                    
                     <Navigation
                      isSignedIn={isSignedIn} 
                      onRouteChange={this.onRouteChange} 
