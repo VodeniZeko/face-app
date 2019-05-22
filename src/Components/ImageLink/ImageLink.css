@@ -2,7 +2,7 @@
 
 .form {
 width: 50em;
-background-color: gray;	
+	
 /*background: #36c;
 background:
 linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
@@ -10,6 +10,7 @@ linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 0 0,
 linear-gradient(115deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
 linear-gradient(245deg, transparent 75%, rgba(255,255,255,.8) 75%) 7px -15px,
 #36c;*/
+background-image: linear-gradient(to right,#200122, #6f0000 );
 background-size: 15px 30px;
 }
 
