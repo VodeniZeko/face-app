@@ -10,12 +10,12 @@ const ImageLink = ({onInputChange, onPictureSubmit}) => {
 	    	<div className = 'center w-100'>
     	<div className = 'form center pa3 br3 shadow-5 '>
 	    		<input 
-          className = 'f4 w-70 center ' 
+          className = 'f4 w-70 center bg-near-white hover-bg-white' 
           type ='text' 
           onChange={onInputChange} 
           />
 	    		<button 
-          className ='w-30 grow f4 link ph1 pv2 dib bg-light-gray'
+          className ='w-30 grow f4 link ph1 pv2 dib orange bg-near-white hover-bg-white'
           onClick = {onPictureSubmit}
           > Detect </button>
 	    	</div>
