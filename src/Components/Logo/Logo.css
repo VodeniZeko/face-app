@@ -1,6 +1,6 @@
 .Tilt {
-background-size:cover;
-/*background-repeat: no-repeat;*/
-opacity: 0.7;
+background-size:contain;
+background-repeat: no-repeat;
+background-color: transparent;
 }
 
